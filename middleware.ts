@@ -18,13 +18,12 @@ export async function middleware(request: NextRequest) {
       },
     });
 
-    // 3. Set the secure, short-lived HttpOnly cookie valid for 15 seconds
+    // 3. Set a secure HttpOnly session cookie that persists until the browser session is closed
     response.cookies.set("video_token", token, {
       path: "/",
       httpOnly: true,
       sameSite: "strict",
       secure: process.env.NODE_ENV === "production",
-      maxAge: 15, // 15 seconds
     });
 
     return response;

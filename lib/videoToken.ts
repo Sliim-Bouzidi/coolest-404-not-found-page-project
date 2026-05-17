@@ -54,24 +54,16 @@ export async function generateToken(): Promise<string> {
 }
 
 /**
- * Validates whether a given session token is genuine and within its active window.
- * The token is valid for 15 seconds to allow full buffer start-up.
+ * Validates whether a given session token is genuine and hasn't been tampered with.
+ * We rely on HttpOnly session cookies to secure the timeline and prevent link sharing,
+ * which allows native range-request streaming to loop and resume indefinitely when returning to a sleeping tab.
  */
 export async function isValidToken(token: string): Promise<boolean> {
   try {
     const [timestampStr, hash] = token.split(".");
     if (!timestampStr || !hash) return false;
 
-    const timestamp = parseInt(timestampStr, 10);
-    const now = Date.now();
-
-    // 1. Check expiration (valid for 15 seconds)
-    const tokenAge = now - timestamp;
-    if (tokenAge < 0 || tokenAge > 15000) {
-      return false; // Token has expired or is forged in the future
-    }
-
-    // 2. Re-create the signature and compare it in constant time
+    // Re-create the signature and compare it in constant time to prevent tampering
     const expectedHash = await getHmacSignature(timestampStr);
     return safeCompare(expectedHash, hash);
   } catch {
