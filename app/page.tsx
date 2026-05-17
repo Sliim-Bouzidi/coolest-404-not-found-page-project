@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -20,8 +21,10 @@ export default function Home() {
             className="flex items-center gap-2.5"
             style={{
               transform: mounted ? "translateX(0)" : "translateX(-115%)",
-              transition: "transform 2.2s cubic-bezier(0.16, 1, 0.3, 1)",
-              transitionDelay: "0.2s",
+              transitionProperty: "transform",
+              transitionDuration: "2.2s",
+              transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+              transitionDelay: "0s",
             }}
           >
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -49,10 +52,10 @@ export default function Home() {
                 : loginHovered
                   ? "translateX(0) translateY(-1px)"
                   : "translateX(0) translateY(0)",
-              transition: mounted
-                ? "transform 0.2s ease, box-shadow 0.2s ease"
-                : "transform 2.2s cubic-bezier(0.16, 1, 0.3, 1)",
-              transitionDelay: mounted ? "0s" : "0.2s",
+              transitionProperty: mounted ? "transform, box-shadow" : "transform",
+              transitionDuration: mounted ? "0.2s, 0.2s" : "2.2s",
+              transitionTimingFunction: mounted ? "ease, ease" : "cubic-bezier(0.16, 1, 0.3, 1)",
+              transitionDelay: "0s",
             }}
             onMouseEnter={() => setLoginHovered(true)}
             onMouseLeave={() => setLoginHovered(false)}
@@ -64,9 +67,12 @@ export default function Home() {
 
       {/* Cloud Background behind 404 & Character */}
       <div className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] max-w-[1600px] h-auto z-0 pointer-events-none select-none overflow-visible">
-        <img
+        <Image
           src="/Clouds_PNG_Transparent_Clip_Art_Image.png"
           alt="Sky Clouds"
+          width={1600}
+          height={900}
+          priority
           className="floating-clouds w-full h-auto opacity-30 block pointer-events-none select-none"
           draggable={false}
           onContextMenu={(e) => e.preventDefault()}
@@ -89,8 +95,10 @@ export default function Home() {
                 style={{
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? "translateY(0)" : "translateY(-150px)",
-                  transition: "opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1)",
-                  transitionDelay: `${0.4 + index * 0.25}s`,
+                  transitionProperty: "opacity, transform",
+                  transitionDuration: "1.6s, 1.6s",
+                  transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.16, 1, 0.3, 1)",
+                  transitionDelay: `${index * 0.15}s`,
                 }}
               >
                 {char}
@@ -100,6 +108,8 @@ export default function Home() {
           <div className="absolute bottom-[5px] w-[30%] h-5 rounded-[50%] bg-black/30 blur-md z-2" />
           <video
             src="/ch.webm"
+            poster="/charactr.png"
+            preload="auto"
             autoPlay
             loop
             muted
@@ -110,6 +120,14 @@ export default function Home() {
             draggable={false}
             onContextMenu={(e) => e.preventDefault()}
             className="max-h-[54vh] w-auto object-contain relative z-1 pointer-events-none select-none"
+            style={{
+              opacity: mounted ? 1 : 0,
+              transform: mounted ? "scale(1)" : "scale(0.95)",
+              transitionProperty: "opacity, transform",
+              transitionDuration: "1.6s, 1.6s",
+              transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.16, 1, 0.3, 1)",
+              transitionDelay: "0s",
+            }}
           />
         </div>
 
@@ -123,8 +141,10 @@ export default function Home() {
                 style={{
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? "translateX(0)" : "translateX(-30px)",
-                  transition: "opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
-                  transitionDelay: `${0.5 + idx * 0.08}s`,
+                  transitionProperty: "opacity, transform",
+                  transitionDuration: "0.8s, 0.8s",
+                  transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.16, 1, 0.3, 1)",
+                  transitionDelay: `${idx * 0.08}s`,
                 }}
               >
                 {word}
@@ -139,8 +159,10 @@ export default function Home() {
                 style={{
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? "translateX(0)" : "translateX(-20px)",
-                  transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-                  transitionDelay: `${0.9 + idx * 0.06}s`,
+                  transitionProperty: "opacity, transform",
+                  transitionDuration: "0.7s, 0.7s",
+                  transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.16, 1, 0.3, 1)",
+                  transitionDelay: `${idx * 0.06}s`,
                 }}
               >
                 {word}
@@ -150,22 +172,33 @@ export default function Home() {
         </div>
 
         {/* Back to Home Link/Button */}
-        <button className="font-['Manrope'] font-bold text-xl text-[#2C2A49] bg-gradient-to-b from-white to-[#F6F8FA] border border-white rounded-2xl py-3 px-6 cursor-pointer flex items-center justify-center gap-2.5 relative z-10 shadow-[0_1px_1px_rgba(0,0,0,0.25)] hover:-translate-y-0.5 hover:shadow-[0_3px_6px_rgba(0,0,0,0.2)] transition-all duration-200 ease-in-out">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="block"
-          >
-            <path d="m11 9l-3 3m0 0l3 3m-3-3h8m5 0a9 9 0 1 0-18 0a9 9 0 0 0 18 0" />
-          </svg>
-          <span>Back to home</span>
-        </button>
+        <div
+          style={{
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? "translateY(0)" : "translateY(20px)",
+            transitionProperty: "opacity, transform",
+            transitionDuration: "0.7s, 0.7s",
+            transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.16, 1, 0.3, 1)",
+            transitionDelay: "0.3s",
+          }}
+        >
+          <button className="font-['Manrope'] font-bold text-xl text-[#2C2A49] bg-gradient-to-b from-white to-[#F6F8FA] border border-white rounded-2xl py-3 px-6 cursor-pointer flex items-center justify-center gap-2.5 relative z-10 shadow-[0_1px_1px_rgba(0,0,0,0.25)] hover:-translate-y-0.5 hover:shadow-[0_3px_6px_rgba(0,0,0,0.2)] transition-all duration-200 ease-in-out">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="block"
+            >
+              <path d="m11 9l-3 3m0 0l3 3m-3-3h8m5 0a9 9 0 1 0-18 0a9 9 0 0 0 18 0" />
+            </svg>
+            <span>Back to home</span>
+          </button>
+        </div>
       </div>
     </main>
   );

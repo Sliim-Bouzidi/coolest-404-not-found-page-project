@@ -1,11 +1,16 @@
 @import "tailwindcss";
 
+@theme {
+  --font-manrope: var(--font-manrope), sans-serif;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
   overflow: hidden;
   height: 100vh;
+  font-family: var(--font-manrope), sans-serif;
 }
 
 @keyframes revealUp {
