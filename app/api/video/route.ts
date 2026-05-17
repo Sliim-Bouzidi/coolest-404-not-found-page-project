@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
 
     const webStream = new ReadableStream({
       start(controller) {
-        fileStream.on("data", (chunk: Buffer) => {
+        fileStream.on("data", (chunk: any) => {
           controller.enqueue(new Uint8Array(chunk));
         });
         fileStream.on("end", () => controller.close());
@@ -63,7 +63,7 @@ export async function GET(request: NextRequest) {
     const fileStream = fs.createReadStream(filePath);
     const webStream = new ReadableStream({
       start(controller) {
-        fileStream.on("data", (chunk: Buffer) => {
+        fileStream.on("data", (chunk: any) => {
           controller.enqueue(new Uint8Array(chunk));
         });
         fileStream.on("end", () => controller.close());
