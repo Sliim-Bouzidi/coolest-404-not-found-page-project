@@ -53,7 +53,10 @@ export async function GET(request: NextRequest) {
         "Content-Length": chunksize.toString(),
         // Served as application/octet-stream so download managers do not intercept it as a video
         "Content-Type": "application/octet-stream",
-        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+        // Cache the stream privately in the browser for 24 hours.
+        // This allows Chromium-based players (Brave, Chrome) to loop the stream instantly
+        // from their local disk cache without making buggy network range queries on loops!
+        "Cache-Control": "private, max-age=86400, immutable",
         "Content-Disposition": "inline",
         "X-Content-Type-Options": "nosniff",
       },
@@ -79,7 +82,8 @@ export async function GET(request: NextRequest) {
         "Content-Length": fileSize.toString(),
         // Served as application/octet-stream so download managers do not intercept it as a video
         "Content-Type": "application/octet-stream",
-        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+        // Cache the stream privately in the browser for 24 hours
+        "Cache-Control": "private, max-age=86400, immutable",
         "Content-Disposition": "inline",
         "X-Content-Type-Options": "nosniff",
       },
