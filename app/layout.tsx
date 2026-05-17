@@ -12,6 +12,9 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Sculpt - Page Not Found",
   description: "Oops! We couldn't find the page you were looking for.",
+  icons: {
+    icon: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>",
+  },
 };
 
 export default function RootLayout({
@@ -22,12 +25,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={manrope.variable}>
       <head>
-        {/* Preload critical clouds background image */}
-        <link
-          rel="preload"
-          href="/Clouds_PNG_Transparent_Clip_Art_Image.png"
-          as="image"
-        />
         {/* Preload lightweight character poster image */}
         <link
           rel="preload"

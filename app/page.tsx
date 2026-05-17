@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -33,7 +32,7 @@ export default function Home() {
                 fill="white"
               />
             </svg>
-            <span className="font-['Manrope'] font-extrabold text-[28px] text-white">
+            <span className="font-extrabold text-[28px] text-white">
               Sculpt
             </span>
           </div>
@@ -42,7 +41,7 @@ export default function Home() {
         {/* Login Button */}
         <div className="flex overflow-hidden">
           <button
-            className="font-['Manrope'] font-bold text-xl text-[#6E6E6E] bg-gradient-to-b from-white to-[#F6F8FA] border border-white rounded-2xl py-3 px-6 cursor-pointer flex items-center justify-center"
+            className="font-bold text-xl text-[#6E6E6E] bg-gradient-to-b from-white to-[#F6F8FA] border border-white rounded-2xl py-3 px-6 cursor-pointer flex items-center justify-center"
             style={{
               boxShadow: loginHovered
                 ? "0px 3px 6px 0px rgba(0, 0, 0, 0.2)"
@@ -67,12 +66,9 @@ export default function Home() {
 
       {/* Cloud Background behind 404 & Character */}
       <div className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] max-w-[1600px] h-auto z-0 pointer-events-none select-none overflow-visible">
-        <Image
+        <img
           src="/Clouds_PNG_Transparent_Clip_Art_Image.png"
           alt="Sky Clouds"
-          width={1600}
-          height={900}
-          priority
           className="floating-clouds w-full h-auto opacity-30 block pointer-events-none select-none"
           draggable={false}
           onContextMenu={(e) => e.preventDefault()}
@@ -82,7 +78,7 @@ export default function Home() {
       <div className="flex flex-col items-center text-center gap-5 z-1">
         <div className="relative flex justify-center items-center">
           <div
-            className="absolute flex justify-center items-center font-['Manrope'] font-extrabold text-[clamp(280px,38vw,850px)] tracking-[-0.09em] leading-none z-0 select-none -translate-x-[0.045em]"
+            className="absolute flex justify-center items-center font-extrabold text-[clamp(280px,38vw,850px)] tracking-[-0.09em] leading-none z-0 select-none -translate-x-[0.045em]"
             style={{
               maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%)",
               WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%)",
@@ -133,7 +129,7 @@ export default function Home() {
 
         {/* Text Section */}
         <div className="flex flex-col gap-2.5 items-center">
-          <h1 className="font-['Manrope'] font-extrabold text-[clamp(36px,4vw,54px)] text-[#2C2A49] m-0 tracking-[-0.03em] flex flex-wrap justify-center">
+          <h1 className="font-extrabold text-[clamp(36px,4vw,54px)] text-[#2C2A49] m-0 tracking-[-0.03em] flex flex-wrap justify-center">
             {"Oops, I think we're lost".split(" ").map((word, idx) => (
               <span
                 key={idx}
@@ -151,7 +147,7 @@ export default function Home() {
               </span>
             ))}
           </h1>
-          <p className="font-['Manrope'] font-medium text-2xl text-[#6E6E6E] m-0 flex flex-wrap justify-center">
+          <p className="font-medium text-2xl text-[#6E6E6E] m-0 flex flex-wrap justify-center">
             {"Let's get you back to somewhere familiar...".split(" ").map((word, idx) => (
               <span
                 key={idx}
@@ -182,7 +178,7 @@ export default function Home() {
             transitionDelay: "0.3s",
           }}
         >
-          <button className="font-['Manrope'] font-bold text-xl text-[#2C2A49] bg-gradient-to-b from-white to-[#F6F8FA] border border-white rounded-2xl py-3 px-6 cursor-pointer flex items-center justify-center gap-2.5 relative z-10 shadow-[0_1px_1px_rgba(0,0,0,0.25)] hover:-translate-y-0.5 hover:shadow-[0_3px_6px_rgba(0,0,0,0.2)] transition-all duration-200 ease-in-out">
+          <button className="font-bold text-xl text-[#2C2A49] bg-gradient-to-b from-white to-[#F6F8FA] border border-white rounded-2xl py-3 px-6 cursor-pointer flex items-center justify-center gap-2.5 relative z-10 shadow-[0_1px_1px_rgba(0,0,0,0.25)] hover:-translate-y-0.5 hover:shadow-[0_3px_6px_rgba(0,0,0,0.2)] transition-all duration-200 ease-in-out">
             <svg
               width="24"
               height="24"
