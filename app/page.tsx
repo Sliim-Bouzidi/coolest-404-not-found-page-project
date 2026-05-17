@@ -212,6 +212,28 @@ export default function Home() {
           </button>
         </div>
       </div>
+
+      {/* Footer / Attribution */}
+      <div
+        className="absolute bottom-4 right-6 z-10"
+        style={{
+          opacity: mounted ? 1 : 0,
+          transform: mounted ? "translateY(0)" : "translateY(10px)",
+          transitionProperty: "opacity, transform",
+          transitionDuration: "0.8s",
+          transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+          transitionDelay: "0.5s",
+        }}
+      >
+        <a
+          href="https://www.linkedin.com/in/slim-bouzidi/?skipRedirect=true"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-xs text-[#6E6E6E]/40 hover:text-[#2C2A49]/60 transition-colors duration-200"
+        >
+          Developed by <span className="font-bold">@Slim Bouzidi</span>
+        </a>
+      </div>
     </main>
   );
 }
