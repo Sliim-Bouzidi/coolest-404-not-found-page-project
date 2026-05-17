@@ -21,20 +21,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={manrope.variable}>
-      <head>
-        {/* Preload critical clouds background image */}
-        <link
-          rel="preload"
-          href="/Clouds_PNG_Transparent_Clip_Art_Image.png"
-          as="image"
-        />
-        {/* Preload lightweight character poster image */}
-        <link
-          rel="preload"
-          href="/charactr.png"
-          as="image"
-        />
-      </head>
       <body>{children}</body>
     </html>
   );
