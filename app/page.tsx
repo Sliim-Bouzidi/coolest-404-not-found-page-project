@@ -9,39 +9,16 @@ export default function Home() {
   useEffect(() => {
     setMounted(true);
   }, []);
+
   return (
-    <main
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        overflow: "hidden",
-        background: "linear-gradient(to bottom, #5C9FCB, #E4ECF9)",
-        position: "relative",
-      }}
-    >
+    <main className="flex justify-center items-center h-screen overflow-hidden bg-gradient-to-b from-[#5C9FCB] to-[#E4ECF9] relative">
       {/* Navbar */}
-      <nav
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "24px 40px",
-          zIndex: 10,
-        }}
-      >
+      <nav className="absolute top-0 left-0 right-0 flex justify-between items-center py-6 px-10 z-10">
         {/* Logo */}
-        <div style={{ display: "flex", overflow: "hidden" }}>
+        <div className="flex overflow-hidden">
           <div
+            className="flex items-center gap-2.5"
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
               transform: mounted ? "translateX(0)" : "translateX(-115%)",
               transition: "transform 2.2s cubic-bezier(0.16, 1, 0.3, 1)",
               transitionDelay: "0.2s",
@@ -53,38 +30,20 @@ export default function Home() {
                 fill="white"
               />
             </svg>
-            <span
-              style={{
-                fontFamily: "'Manrope', sans-serif",
-                fontWeight: 800,
-                fontSize: "28px",
-                color: "#FFFFFF",
-              }}
-            >
+            <span className="font-['Manrope'] font-extrabold text-[28px] text-white">
               Sculpt
             </span>
           </div>
         </div>
 
         {/* Login Button */}
-        <div style={{ display: "flex", overflow: "hidden" }}>
+        <div className="flex overflow-hidden">
           <button
+            className="font-['Manrope'] font-bold text-xl text-[#6E6E6E] bg-gradient-to-b from-white to-[#F6F8FA] border border-white rounded-2xl py-3 px-6 cursor-pointer flex items-center justify-center"
             style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontWeight: 700,
-              fontSize: "20px",
-              color: "#6E6E6E",
-              background: "linear-gradient(to bottom, #FFFFFF, #F6F8FA)",
-              border: "1px solid #FFFFFF",
-              borderRadius: "16px",
-              padding: "12px 24px",
-              cursor: "pointer",
               boxShadow: loginHovered
                 ? "0px 3px 6px 0px rgba(0, 0, 0, 0.2)"
                 : "0px 1px 1px 0px rgba(0, 0, 0, 0.25)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               transform: !mounted
                 ? "translateX(115%) translateY(0)"
                 : loginHovered
@@ -104,64 +63,21 @@ export default function Home() {
       </nav>
 
       {/* Cloud Background behind 404 & Character */}
-      <div
-        style={{
-          position: "absolute",
-          top: "45%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "110%",
-          maxWidth: "1600px",
-          height: "auto",
-          zIndex: 0,
-          pointerEvents: "none",
-          userSelect: "none",
-          overflow: "visible",
-        }}
-      >
+      <div className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] max-w-[1600px] h-auto z-0 pointer-events-none select-none overflow-visible">
         <img
           src="/Clouds_PNG_Transparent_Clip_Art_Image.png"
           alt="Sky Clouds"
-          className="floating-clouds"
+          className="floating-clouds w-full h-auto opacity-30 block pointer-events-none select-none"
           draggable={false}
           onContextMenu={(e) => e.preventDefault()}
-          style={{
-            width: "100%",
-            height: "auto",
-            opacity: 0.3,
-            display: "block",
-            pointerEvents: "none",
-            userSelect: "none",
-            WebkitUserSelect: "none",
-          }}
         />
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          textAlign: "center",
-          gap: "20px",
-          zIndex: 1,
-        }}
-      >
-        <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div className="flex flex-col items-center text-center gap-5 z-1">
+        <div className="relative flex justify-center items-center">
           <div
+            className="absolute flex justify-center items-center font-['Manrope'] font-extrabold text-[clamp(280px,38vw,850px)] tracking-[-0.09em] leading-none z-0 select-none -translate-x-[0.045em]"
             style={{
-              position: "absolute",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              fontFamily: "'Manrope', sans-serif",
-              fontWeight: 800,
-              fontSize: "clamp(280px, 38vw, 850px)",
-              letterSpacing: "-0.09em",
-              lineHeight: 1,
-              zIndex: 0,
-              userSelect: "none",
-              transform: "translateX(-0.045em)",
               maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%)",
               WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%)",
             }}
@@ -169,12 +85,8 @@ export default function Home() {
             {["4", "0", "4"].map((char, index) => (
               <span
                 key={index}
+                className="inline-block bg-gradient-to-b from-white to-[#E3EBF9] bg-clip-text text-transparent"
                 style={{
-                  display: "inline-block",
-                  background: "linear-gradient(to bottom, #FFFFFF, #E3EBF9)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? "translateY(0)" : "translateY(-150px)",
                   transition: "opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -185,18 +97,7 @@ export default function Home() {
               </span>
             ))}
           </div>
-          <div
-            style={{
-              position: "absolute",
-              bottom: "5px",
-              width: "30%",
-              height: "20px",
-              borderRadius: "50%",
-              backgroundColor: "rgba(0, 0, 0, 0.3)",
-              filter: "blur(10px)",
-              zIndex: 2,
-            }}
-          />
+          <div className="absolute bottom-[5px] w-[30%] h-5 rounded-[50%] bg-black/30 blur-md z-2" />
           <video
             src="/ch.webm"
             autoPlay
@@ -208,40 +109,18 @@ export default function Home() {
             disableRemotePlayback
             draggable={false}
             onContextMenu={(e) => e.preventDefault()}
-            style={{
-              maxHeight: "54vh",
-              width: "auto",
-              objectFit: "contain",
-              position: "relative",
-              zIndex: 1,
-              pointerEvents: "none",
-              userSelect: "none",
-              WebkitUserSelect: "none",
-            }}
+            className="max-h-[54vh] w-auto object-contain relative z-1 pointer-events-none select-none"
           />
         </div>
 
         {/* Text Section */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px", alignItems: "center" }}>
-          <h1
-            style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontWeight: 800,
-              fontSize: "clamp(36px, 4vw, 54px)",
-              color: "#2C2A49",
-              margin: 0,
-              letterSpacing: "-0.03em",
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-            }}
-          >
+        <div className="flex flex-col gap-2.5 items-center">
+          <h1 className="font-['Manrope'] font-extrabold text-[clamp(36px,4vw,54px)] text-[#2C2A49] m-0 tracking-[-0.03em] flex flex-wrap justify-center">
             {"Oops, I think we're lost".split(" ").map((word, idx) => (
               <span
                 key={idx}
+                className="inline-block mr-[0.24em]"
                 style={{
-                  display: "inline-block",
-                  marginRight: "0.24em",
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? "translateX(0)" : "translateX(-30px)",
                   transition: "opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -252,24 +131,12 @@ export default function Home() {
               </span>
             ))}
           </h1>
-          <p
-            style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontWeight: 500,
-              fontSize: "24px",
-              color: "#6E6E6E",
-              margin: 0,
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-            }}
-          >
+          <p className="font-['Manrope'] font-medium text-2xl text-[#6E6E6E] m-0 flex flex-wrap justify-center">
             {"Let's get you back to somewhere familiar...".split(" ").map((word, idx) => (
               <span
                 key={idx}
+                className="inline-block mr-[0.22em]"
                 style={{
-                  display: "inline-block",
-                  marginRight: "0.22em",
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? "translateX(0)" : "translateX(-20px)",
                   transition: "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -283,35 +150,7 @@ export default function Home() {
         </div>
 
         {/* Back to Home Link/Button */}
-        <button
-          style={{
-            fontFamily: "'Manrope', sans-serif",
-            fontWeight: 700,
-            fontSize: "20px",
-            color: "#2C2A49",
-            background: "linear-gradient(to bottom, #FFFFFF, #F6F8FA)",
-            border: "1px solid #FFFFFF",
-            borderRadius: "16px",
-            padding: "12px 24px",
-            cursor: "pointer",
-            boxShadow: "0px 1px 1px 0px rgba(0, 0, 0, 0.25)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
-            position: "relative",
-            zIndex: 10,
-            transition: "transform 0.2s ease, box-shadow 0.2s ease",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "translateY(-1px)";
-            e.currentTarget.style.boxShadow = "0px 3px 6px 0px rgba(0, 0, 0, 0.2)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "none";
-            e.currentTarget.style.boxShadow = "0px 1px 1px 0px rgba(0, 0, 0, 0.25)";
-          }}
-        >
+        <button className="font-['Manrope'] font-bold text-xl text-[#2C2A49] bg-gradient-to-b from-white to-[#F6F8FA] border border-white rounded-2xl py-3 px-6 cursor-pointer flex items-center justify-center gap-2.5 relative z-10 shadow-[0_1px_1px_rgba(0,0,0,0.25)] hover:-translate-y-0.5 hover:shadow-[0_3px_6px_rgba(0,0,0,0.2)] transition-all duration-200 ease-in-out">
           <svg
             width="24"
             height="24"
@@ -321,7 +160,7 @@ export default function Home() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            style={{ display: "block" }}
+            className="block"
           >
             <path d="m11 9l-3 3m0 0l3 3m-3-3h8m5 0a9 9 0 1 0-18 0a9 9 0 0 0 18 0" />
           </svg>
