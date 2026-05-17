@@ -156,7 +156,7 @@ export default function Home() {
               alignItems: "center",
               fontFamily: "'Manrope', sans-serif",
               fontWeight: 800,
-              fontSize: "clamp(250px, 33vw, 750px)",
+              fontSize: "clamp(280px, 38vw, 850px)",
               letterSpacing: "-0.09em",
               lineHeight: 1,
               zIndex: 0,
