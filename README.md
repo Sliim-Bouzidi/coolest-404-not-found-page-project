@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌌 Coolest 404 Not Found Page Project
 
-## Getting Started
+[![Vercel Deployment](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat-square&logo=vercel)](https://coolest-404-not-found-page-project-9s6sr14mt.vercel.app/)
+[![Next.js Version](https://img.shields.io/badge/Next.js-15.0%2B-blue?style=flat-square&logo=nextdotjs)](https://nextjs.org/)
+[![React Version](https://img.shields.io/badge/React-19.0-61dafb?style=flat-square&logo=react)](https://react.dev/)
 
-First, run the development server:
+A visually stunning, interactive, and beautifully animated 404 Error page built using **Next.js 15 (App Router)** and **React 19**. It features smooth entry transitions, parallax-like cloud floating effects, custom glassmorphism components, and an immersive 3D-looping character video.
 
+---
+
+## 🎨 Inspiration & Credits
+
+This project was inspired by the incredible designs and tutorials of **Kyle Skelly**. His work on creating premium user interfaces with Figma and interactive web animations made this project possible.
+
+* **Original Tutorial Video**: [Design This Animated Website Using Figma and AI!](https://www.youtube.com/watch?v=98wtarTjrHQ)
+* **YouTube Channel**: [Kyle Skelly (@kyleslyf)](https://www.youtube.com/@kyleslyf)
+
+Please go check out his channel for more beautiful designs!
+
+---
+
+## ✨ Features
+
+* **🎬 Immersive 3D/WebM Character Video**: Seamlessly integrated transparent 3D character looping video (`/ch.webm`) that floats smoothly.
+* **☁️ Floating Clouds Parallax**: Layered background cloud animations giving the webpage deep environmental dimensions.
+* **✨ Dynamic Entry Transitions**:
+  * Delayed slide-in animations for the navigation brand logo and login button.
+  * Falling custom-masked **"404"** typography with coordinated delay timing using cubic-bezier curves.
+  * Staggered text letter/word fly-in sequence for headers and subheadings.
+* **💎 Glassmorphic Styling**: Sleek buttons with dynamic hover effects, smooth transform translations, and premium shadows.
+* **📱 Responsive Fluid Layout**: Utilizes CSS clamp-based typography (`clamp()`) to scale headers and layout elements across all mobile, tablet, and desktop viewports.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Framework**: [Next.js 15+](https://nextjs.org/) (App Router)
+* **Library**: [React 19](https://react.dev/) (Hooks, Client State, Lifecycle Transitions)
+* **Styling**: Vanilla Inline Styling & Modern CSS3 Animations
+* **Assets**: Optimized `.webm` transparent loops and alpha-masked png graphics.
+
+---
+
+## 🚀 Getting Started
+
+To run the development server locally:
+
+### 1. Install dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Run the development server
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see your gorgeous 404 page alive!
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Deployment on Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The easiest way to deploy this project is via the [Vercel Platform](https://vercel.com/new).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+To deploy:
+1. Push your local repository to your GitHub account (`Sliim-Bouzidi`).
+2. Link the repository to your Vercel Dashboard.
+3. Vercel will automatically build and deploy it!
