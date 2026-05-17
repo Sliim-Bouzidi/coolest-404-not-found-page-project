@@ -8,6 +8,22 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
+
+    const handleVisibility = () => {
+      if (document.visibilityState === "visible") {
+        const video = document.querySelector("video");
+        if (video) {
+          // Force-reload the video to clear the frozen Chromium buffer on tab wake-up
+          video.load();
+          video.play().catch(() => {});
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
   }, []);
 
   return (
